@@ -31,7 +31,7 @@ use_collision = true
 collision_mask = 2
 size = Vector3(23.08899, 1.1795211, 18.143509)
 
-[node name="Node3D" parent="." instance=ExtResource("1_ig7tw")]
+[node name="Player" parent="." instance=ExtResource("1_ig7tw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9037548, 0)
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="."]

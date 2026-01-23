@@ -24,3 +24,13 @@ transform = Transform3D(1.6316814, 0, 0, 0, 1.6316814, 0, 0, 0, 1.6316814, 0, 1.
 
 [node name="Camera3D" type="Camera3D" parent="CamPivot"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.035986423)
+current = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 7.0
+offset_top = 1.0
+offset_right = 47.0
+offset_bottom = 24.0
+text = "120"

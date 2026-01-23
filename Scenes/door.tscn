@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://ch8i0wvyc6lcp"]
+
+[ext_resource type="ArrayMesh" uid="uid://cp1sl0k4a4lbq" path="res://door/source/door2_low.obj" id="1_w6aom"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Door2Low" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.42356, 1.1920929e-07, -5.8345613)
+mesh = ExtResource("1_w6aom")
