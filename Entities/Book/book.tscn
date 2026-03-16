@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://duhe8oduhwh5j"]
+
+[ext_resource type="Script" uid="uid://bm2dk0g5a1obk" path="res://Entities/Book/book.gd" id="1_4pqrv"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_4pqrv"]
+radius = 1.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_4pqrv"]
+
+[node name="Book" type="Node3D"]
+script = ExtResource("1_4pqrv")
+item_id = "1"
+metadata/_custom_type_script = "uid://b6ds1pnr6bonu"
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("SphereShape3D_4pqrv")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.62465066, 0, 0, 0, 0.09782416, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("BoxMesh_4pqrv")

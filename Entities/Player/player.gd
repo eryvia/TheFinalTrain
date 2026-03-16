@@ -33,7 +33,9 @@ extends CharacterBody3D
 
 @onready var cam_pivot : Node3D   = $CamPivot
 @onready var cam       : Camera3D = $CamPivot/Camera3D
-@onready var ray = $CamPivot/Camera3D/RayCast3D
+@onready var ray = $CamPivot/Camera3D/RayCast3
+@onready var label_crosshair: Label = $CanvasLayer/CenterContainer/VBoxContainer/Label
+
 
 var rayIsColliding = false
 
@@ -48,17 +50,35 @@ var _cam_base_y         := 0.0          # Original cam local Y
 var _breathe_timer      := 0.0
 var _input_dir          := Vector2.ZERO  # Cached for tilt
 
-func is_ray_colliding():
-	if ray.is_colliding():
-		rayIsColliding = true
-		var hit = ray.is_colliding() 
-		print("hit ${hit.name}" )
+var Items = []
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	_cam_base_y = cam.position.y
 
-# ── Always-fires input (fixes the camera stop bug) ─────────────────────────
+func add_to_inventory(item_id):
+	Items.append(item_id)
+
+func get_raycast_target():
+	if ray.is_colliding():
+		rayIsColliding = true
+		var hit = ray.is_colliding() 
+		print("hit")
+		return hit
+		
+func _show_label(label_text):
+	label_crosshair.text = label_text
+	
+func _process_interaction():
+	var target = get_raycast_target()
+	if target is Interactable and target.is_enabled:
+		_show_label(target.get_label())
+		if Input.is_action_just_pressed("interact"):
+			target.interact(self)
+
+func _process(delta: float) -> void:
+	get_raycast_target()
+
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		rotate_y(deg_to_rad(-event.relative.x * mouse_sens))
@@ -76,9 +96,6 @@ func _input(event: InputEvent) -> void:
 			else Input.MOUSE_MODE_CAPTURED
 		)
 		
-func _process(delta: float) -> void:
-	is_ray_colliding()
-
 func _physics_process(delta: float) -> void:
 	_input_dir = Input.get_vector("move_left", "move_right", "move_back", "move_forward")
 

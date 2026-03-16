@@ -16,9 +16,14 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 config/name="TheLastTrain"
 run/main_scene="uid://dweh0l26heiii"
-config/features=PackedStringArray("4.6", "Forward Plus")
+config/features=PackedStringArray("4.5", "Forward Plus")
 boot_splash/bg_color=Color(0.13693261, 0.20252061, 0.22778001, 1)
 config/icon="res://icon.svg"
+
+[autoload]
+
+SignalBus="*res://Utilities/signal_bus.gd"
+Global="*res://Utilities/Global.gd"
 
 [debug]
 
@@ -75,4 +80,4 @@ run={
 
 3d_physics/layer_1="STRUCTURES"
 3d_physics/layer_2="PLAYER"
-3d_physics/layer_3="NPCS"
+3d_physics/layer_3="Interactable"
