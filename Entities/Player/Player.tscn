@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://cyxrnj7qijt5c"]
+[gd_scene format=3 uid="uid://cyxrnj7qijt5c"]
 
 [ext_resource type="Script" uid="uid://cvqkqyboqkw0a" path="res://Entities/Player/player.gd" id="1_e5kic"]
 [ext_resource type="Shader" uid="uid://d0ufkgigi3bec" path="res://Entities/Player/Player.gdshader" id="2_ww0jn"]
@@ -13,37 +13,37 @@ shader_parameter/pixel_size = 3.0
 shader_parameter/dither_strength = 0.08
 shader_parameter/color_depth = 16.0
 
-[node name="Player" type="CharacterBody3D"]
+[node name="Player" type="CharacterBody3D" unique_id=363727584]
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_e5kic")
 
-[node name="CSGSphere3D" type="CSGSphere3D" parent="."]
+[node name="CSGSphere3D" type="CSGSphere3D" parent="." unique_id=607925043]
 transform = Transform3D(1.3885834, 0, 0, 0, 2.775117, 0, 0, 0, 1, 0, 0.18190491, 0)
 use_collision = true
 collision_layer = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1030274880]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.32250977, 0)
 shape = SubResource("CapsuleShape3D_ww0jn")
 debug_color = Color(0.38739184, 0.4729585, 1, 0.41960785)
 
-[node name="CamPivot" type="Node3D" parent="."]
+[node name="CamPivot" type="Node3D" parent="." unique_id=397860600]
 transform = Transform3D(1.6316814, 0, 0, 0, 1.6316814, 0, 0, 0, 1.6316814, 0, 1.2480931, 0)
 
-[node name="Camera3D" type="Camera3D" parent="CamPivot"]
+[node name="Camera3D" type="Camera3D" parent="CamPivot" unique_id=584961874]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.035986423)
 current = true
 
-[node name="RayCast3D" type="RayCast3D" parent="CamPivot/Camera3D"]
+[node name="RayCast3D" type="RayCast3D" parent="CamPivot/Camera3D" unique_id=1262396280]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0)
 target_position = Vector3(0, 0, 5)
 collision_mask = 4
 collide_with_areas = true
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=643772237]
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1647743488]
 material = SubResource("ShaderMaterial_vweq0")
 anchors_preset = 15
 anchor_right = 1.0
@@ -55,7 +55,7 @@ offset_bottom = 2.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer" unique_id=1843472229]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -64,13 +64,13 @@ offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/CenterContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/CenterContainer" unique_id=39902317]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/CenterContainer/VBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/CenterContainer/VBoxContainer" unique_id=1836699784]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="CanvasLayer/CenterContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="CanvasLayer/CenterContainer/VBoxContainer" unique_id=252877064]
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
 text = "Testdawd
