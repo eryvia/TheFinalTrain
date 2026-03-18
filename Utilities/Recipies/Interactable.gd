@@ -4,6 +4,7 @@ extends Node3D
 var name_index: String
 var interaction_label: String = "Interact"
 var is_enabled: bool = true
+var marker: Marker3D
 
 func interact(player) -> void:
 	pass

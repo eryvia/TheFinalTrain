@@ -1,5 +1,7 @@
 extends Node
 
+signal dialogue_ended
+
 @onready var dialogue_text = $Label
 
 var dialogue_lines: Array = []
@@ -26,12 +28,14 @@ func _advance() -> void:
 	else:
 		_show_current_line()
 
+
 func _end_dialogue() -> void:
 	is_active = false
 	dialogue_lines = []
 	dialogue_index = 0
 	dialogue_text.visible = false
-
+	dialogue_ended.emit()
+	
 func _process(delta: float) -> void:
 	if not is_active:
 		return

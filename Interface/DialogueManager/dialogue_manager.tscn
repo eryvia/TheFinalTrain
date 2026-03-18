@@ -1,11 +1,11 @@
-[gd_scene format=3 uid="uid://dpbvbyx1mfftg"]
+[gd_scene load_steps=2 format=3 uid="uid://dpbvbyx1mfftg"]
 
 [ext_resource type="Script" uid="uid://bakfncgb2boep" path="res://Interface/DialogueManager/dialogue_manager.gd" id="1_o35dc"]
 
-[node name="DialogueManager" type="Node" unique_id=520008709]
+[node name="DialogueManager" type="Node"]
 script = ExtResource("1_o35dc")
 
-[node name="Label" type="Label" parent="." unique_id=1480350334]
+[node name="Label" type="Label" parent="."]
 z_index = 10
 anchors_preset = -1
 anchor_right = 1.014

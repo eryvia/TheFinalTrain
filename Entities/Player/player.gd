@@ -36,9 +36,13 @@ extends CharacterBody3D
 @onready var ray = $CamPivot/Camera3D/RayCast3D
 @onready var label_crosshair: Label = $CanvasLayer/CenterContainer/VBoxContainer/Label
 
+var raycast_marker: Marker3D
 
 var rayIsColliding = false
-var canMove = true
+var dialogueState = false
+var _camera_locked := false
+var _original_basis: Basis
+
 
 var _coyote_timer       := 0.0
 var _jump_buffer_timer  := 0.0
@@ -54,6 +58,7 @@ var _input_dir          := Vector2.ZERO  # Cached for tilt
 var Items = []
 
 func _ready() -> void:
+	DialogueManager.dialogue_ended.connect(release_camera)
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	_cam_base_y = cam.position.y
 
@@ -72,6 +77,9 @@ func _show_label(label_text):
 func _process_interaction():
 	var target = get_raycast_target()
 	if target is Interactable and target.is_enabled:
+		if target.has_method("get_pointer"):
+			raycast_marker = target.get_pointer()
+			print("got marker, %s" % raycast_marker)
 		_show_label(target.get_label())
 		if Input.is_action_just_pressed("interact"):
 			target.interact(self)
@@ -81,6 +89,20 @@ func _process_interaction():
 func _process(delta: float) -> void:
 	_process_interaction()
 	
+func focus_camera_on(marker: Marker3D) -> void:
+	_camera_locked = true
+	_original_basis = cam.global_basis
+
+	var tween = create_tween()
+	tween.tween_method(_look_toward.bind(marker), 0.0, 1.0, 0.4)
+
+func _look_toward(weight: float, marker: Marker3D) -> void:
+	var target_dir = (marker.global_position - cam.global_position).normalized()
+	var target_basis = Basis.looking_at(target_dir, Vector3.UP)
+	cam.global_basis = _original_basis.slerp(target_basis, weight)
+
+func release_camera() -> void:
+	_camera_locked = false
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
@@ -99,6 +121,9 @@ func _input(event: InputEvent) -> void:
 		)
 		
 func _physics_process(delta: float) -> void:
+	
+	if _camera_locked:
+		return
 	_input_dir = Input.get_vector("move_left", "move_right", "move_back", "move_forward")
 
 	# --- Wish direction ---
