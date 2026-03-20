@@ -102,6 +102,9 @@ func _look_toward(weight: float, marker: Marker3D) -> void:
 	cam.global_basis = _original_basis.slerp(target_basis, weight)
 
 func release_camera() -> void:
+	#var tween = create_tween()
+	
+	cam.global_basis = _original_basis
 	_camera_locked = false
 
 func _input(event: InputEvent) -> void:

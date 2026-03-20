@@ -2,7 +2,7 @@ extends Node
 
 signal dialogue_ended
 
-@onready var dialogue_text = $Label
+@onready var dialogue_text = $TextDialogue
 
 var dialogue_lines: Array = []
 var dialogue_index: int = 0

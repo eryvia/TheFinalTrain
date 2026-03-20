@@ -1,15 +1,19 @@
-[gd_scene load_steps=2 format=3 uid="uid://dpbvbyx1mfftg"]
+[gd_scene load_steps=3 format=3 uid="uid://dpbvbyx1mfftg"]
 
 [ext_resource type="Script" uid="uid://bakfncgb2boep" path="res://Interface/DialogueManager/dialogue_manager.gd" id="1_o35dc"]
+[ext_resource type="Texture2D" uid="uid://x1oxkgfepkx7" path="res://Entities/noname.png" id="2_7py6u"]
 
 [node name="DialogueManager" type="Node"]
 script = ExtResource("1_o35dc")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = -1
+anchor_right = 0.23300001
+anchor_bottom = 0.38700002
+offset_right = 0.63998413
+offset_bottom = 0.5999756
 
-[node name="Label" type="Label" parent="."]
+[node name="TextDialogue" type="Label" parent="."]
 z_index = 10
 anchors_preset = -1
 anchor_right = 1.014
@@ -20,3 +24,18 @@ offset_right = -18.880127
 offset_bottom = -48.200012
 theme_override_font_sizes/font_size = 128
 text = "dawdwaadw"
+
+[node name="Noname" type="Sprite2D" parent="."]
+position = Vector2(274, 776.99994)
+scale = Vector2(0.09531245, 0.0947186)
+texture = ExtResource("2_7py6u")
+
+[node name="descr" type="Label" parent="."]
+anchors_preset = -1
+anchor_right = 0.061000004
+anchor_bottom = 0.019000001
+offset_left = 1709.0
+offset_top = 1124.0
+offset_right = 1708.88
+offset_bottom = 1124.2
+text = "[ e ] to advance"
