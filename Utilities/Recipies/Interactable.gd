@@ -11,3 +11,6 @@ func interact(player) -> void:
 
 func get_label() -> String:
 	return interaction_label
+
+func reset_label() -> void:
+	interaction_label = "Interact"

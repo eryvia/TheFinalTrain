@@ -9,6 +9,7 @@ radius = 1.0
 
 [node name="Book" type="StaticBody3D" unique_id=1384657478]
 collision_layer = 4
+collision_mask = 3
 script = ExtResource("1_4pqrv")
 item_id = "1"
 

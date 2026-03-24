@@ -5,7 +5,6 @@ extends Interactable
 var label_index := 0
 var labels = ["just a old book", "probably filled with random bs","pick up"]
 
-
 func _ready():
 	interaction_label = "Pick up"
 	is_enabled = true

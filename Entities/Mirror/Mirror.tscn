@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://byiv2e35kqy7w"]
+
+[ext_resource type="Script" uid="uid://cmkefibvwcvsf" path="res://Entities/Mirror/mirror.gd" id="1_7ty66"]
+[ext_resource type="Shader" uid="uid://hnp6nk5o3pxv" path="res://Entities/Mirror/Mirror.gdshader" id="2_ilxyl"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7ty66"]
+size = Vector3(1.9111176, 3.138733, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pvc1j"]
+render_priority = 0
+shader = ExtResource("2_ilxyl")
+
+[sub_resource type="BoxMesh" id="BoxMesh_7ty66"]
+material = SubResource("ShaderMaterial_pvc1j")
+
+[node name="Mirror" type="StaticBody3D" unique_id=501307195]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_7ty66")
+
+[node name="Mark" type="Marker3D" parent="." unique_id=1930388194]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.613382, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1231436370]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.036705017, 0.9510193, 0)
+shape = SubResource("BoxShape3D_7ty66")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1015660125]
+transform = Transform3D(1.7816384, 0, 0, 0, 2.8213265, 0, 0, 0, 0.14355916, 0, 0.89660597, 0)
+mesh = SubResource("BoxMesh_7ty66")
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=1469455983]
+
+[node name="Camera3D" type="Camera3D" parent="SubViewport" unique_id=154360104]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4695891, -0.324641)

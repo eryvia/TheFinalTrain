@@ -1,13 +1,16 @@
 extends CharacterBody3D
 
+#signal left_raycast
+
 # --- Movement ---
 @export var move_speed      := 4.5      # Slower, heavier feel
-@export var run_speed_mult  := 2.5
+@export var run_speed_mult  := 3.2
 @export var accel           := 14.0
 @export var air_accel       := 4.0
 @export var friction        := 20.0
 @export var gravity         := 28.0
 @export var jump_height     := 0.95     # Lower jumps feel grittier
+@export var crouch_height  	:= -0.6
 @export var coyote_time     := 0.12
 @export var jump_buffer_time := 0.12
 @export var crouch_buffer_time  := 0.23
@@ -38,10 +41,12 @@ extends CharacterBody3D
 @onready var label_crosshair: Label = $CanvasLayer/CenterContainer/VBoxContainer/Label
 
 var raycast_marker: Marker3D
+var current_target = null 
 
 var rayIsColliding = false
 var dialogueState = false
 var _camera_locked := false
+var cig_state := false
 var _original_basis: Basis
 
 
@@ -63,14 +68,21 @@ func _ready() -> void:
 	DialogueManager.dialogue_ended.connect(release_camera)
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	_cam_base_y = cam.position.y
-
+	
 func add_to_inventory(item_id):
 	Items.append(item_id)
 
 func get_raycast_target():
 	if ray.is_colliding():
-		#print("HIT")
+		var new_target = ray.get_collider()
+		if current_target != null and current_target != new_target:
+			current_target.reset_label()
+		current_target = new_target
 		return ray.get_collider()
+	else:
+		if current_target != null:
+			current_target.reset_label()
+			current_target = null
 	return null
 		
 func _show_label(label_text):
@@ -104,8 +116,7 @@ func _look_toward(weight: float, marker: Marker3D) -> void:
 	cam.global_basis = _original_basis.slerp(target_basis, weight)
 
 func release_camera() -> void:
-	#var tween = create_tween()
-	
+	#var tween = create_tween()	
 	cam.global_basis = _original_basis
 	_camera_locked = false
 
@@ -128,6 +139,9 @@ func _input(event: InputEvent) -> void:
 		)
 		
 func _physics_process(delta: float) -> void:
+	if Input.is_action_just_pressed("end"):
+		release_camera() 
+	
 	if _camera_locked:
 		return
 	
@@ -146,6 +160,8 @@ func _physics_process(delta: float) -> void:
 	else:
 		_coyote_timer = max(0.0, _coyote_timer - delta)
 
+	# --- ExitCameralock ---
+		
 	if Input.is_action_just_pressed("jump"):
 		_jump_buffer_timer = jump_buffer_time
 	else:
@@ -187,8 +203,9 @@ func _physics_process(delta: float) -> void:
 		velocity.y = sqrt(2.0 * gravity * jump_height)
 
 	if _crouch_buffer_timer > 0.0:
+		_crouch_buffer_timer = 0.0
+		velocity.y = sqrt(2.0 * gravity * crouch_height)
 		pass
-		
 		
 	# --- Landing impact ---
 	var just_landed := not _was_on_floor and is_on_floor()

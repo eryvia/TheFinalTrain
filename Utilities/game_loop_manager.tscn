@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dhxrmapte222e"]
+
+[ext_resource type="Script" uid="uid://b7ga4cvknui0m" path="res://game_loop_manager.gd" id="1_aqalc"]
+
+[node name="DayManager" type="Node" unique_id=1130325122]
+script = ExtResource("1_aqalc")

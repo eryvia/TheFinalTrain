@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://dweh0l26heiii"]
+[gd_scene format=3 uid="uid://dweh0l26heiii"]
 
 [ext_resource type="PackedScene" uid="uid://cyxrnj7qijt5c" path="res://Entities/Player/Player.tscn" id="1_0rwry"]
-[ext_resource type="PackedScene" uid="uid://b7gq5jrj2lhly" path="res://Entities/NpcPlaceholder/NpcTest.tscn" id="2_1x4nq"]
+[ext_resource type="PackedScene" uid="uid://b7gq5jrj2lhly" path="res://Entities/NpcPlaceholder/npc.tscn" id="2_1x4nq"]
 [ext_resource type="PackedScene" uid="uid://duhe8oduhwh5j" path="res://Entities/Book/book.tscn" id="3_acw6k"]
+[ext_resource type="PackedScene" uid="uid://byiv2e35kqy7w" path="res://Entities/Mirror/Mirror.tscn" id="4_pm5et"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1x4nq"]
 sky_top_color = Color(0.48410708, 0.41588038, 0.5490812, 1)
@@ -18,26 +19,29 @@ sky = SubResource("Sky_0xm2m")
 tonemap_mode = 2
 glow_enabled = true
 
-[node name="TheStation" type="Node3D"]
+[node name="Bathroom" type="Node3D" unique_id=481294560]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1511261473]
 environment = SubResource("Environment_acw6k")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=308201502]
 transform = Transform3D(-0.012217023, -0.8069001, 0.5905616, 0, 0.5906057, 0.8069603, -0.9999254, 0.009858653, -0.0072154435, 0, 0, 0)
 shadow_enabled = true
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=1198733593]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.600586, -4.65471, -0.43026733)
 use_collision = true
 collision_mask = 2
 size = Vector3(100, 1.361, 100)
 
-[node name="Player" parent="." instance=ExtResource("1_0rwry")]
+[node name="Player" parent="." unique_id=1416636059 instance=ExtResource("1_0rwry")]
 transform = Transform3D(2.0056615, 0, 0, 0, 2.0056615, 0, 0, 0, 2.0056615, 0, 1.9037548, 0)
 
-[node name="Npc" parent="." instance=ExtResource("2_1x4nq")]
+[node name="Npc" parent="." unique_id=1227715538 instance=ExtResource("2_1x4nq")]
 transform = Transform3D(2.855, 0, 0, 0, 2.855, 0, 0, 0, 2.855, 0, 0, 11.98819)
 
-[node name="Book" parent="." instance=ExtResource("3_acw6k")]
+[node name="Book" parent="." unique_id=54925739 instance=ExtResource("3_acw6k")]
 transform = Transform3D(0.41218233, -0.9111014, 0, 0.9111014, 0.41218233, 0, 0, 0, 1, 12.052172, -2.5101976, 0)
+
+[node name="Mirror" parent="." unique_id=501307195 instance=ExtResource("4_pm5et")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.789644, -2.0722675, 2.371523)

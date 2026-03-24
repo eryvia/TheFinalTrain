@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://bxcrssq46xq3r"]
+
+[ext_resource type="Script" uid="uid://dcl5hhi1k1u5a" path="res://Entities/TV/tv.gd" id="1_t4nii"]
+[ext_resource type="Shader" uid="uid://bfm5by20rrcwq" path="res://Entities/TV/tv.gdshader" id="2_uovl0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_awhsd"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8eprd"]
+render_priority = 0
+shader = ExtResource("2_uovl0")
+
+[sub_resource type="BoxMesh" id="BoxMesh_t4nii"]
+material = SubResource("ShaderMaterial_8eprd")
+
+[node name="TV" type="StaticBody3D" unique_id=706096567]
+script = ExtResource("1_t4nii")
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=2127995716]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1248377155]
+shape = SubResource("BoxShape3D_awhsd")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=152842003]
+transform = Transform3D(1, 0, 0, 0, 1.1493865, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("BoxMesh_t4nii")
+skeleton = NodePath("../MeshInstance3D")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=178719405]
+transform = Transform3D(1, 0, 0, 0, 1.0720944, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("BoxMesh_t4nii")
+
+[node name="Mark" type="Marker3D" parent="." unique_id=1274854898]
