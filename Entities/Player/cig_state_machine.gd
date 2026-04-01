@@ -2,12 +2,11 @@ extends Node
 # action_state_machine.gd
 enum ActionState { IDLE, LIGHTING, SMOKING, PUTTING_OUT }
 
-var parent = get_tree().get_parent()
+var parent =  get_parent()
 var current_state: ActionState = ActionState.IDLE
 var state_timer: float = 0.0
 
 func _process(delta):
-	parent.isInState = true
 	state_timer += delta
 	match current_state:
 		ActionState.IDLE:
