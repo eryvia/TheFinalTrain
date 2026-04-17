@@ -26,6 +26,7 @@ SignalBus="*res://Utilities/signal_bus.gd"
 Global="*res://Utilities/Global.gd"
 DialogueManager="*res://Interface/DialogueManager/dialogue_manager.tscn"
 ReadingManager="*uid://coetcaha6uut6"
+GameLoopManager="*uid://b7ga4cvknui0m"
 
 [display]
 
@@ -37,6 +38,7 @@ window/size/mode=2
 
 folder_colors={
 "res://Entities/": "red",
+"res://Interface/": "pink",
 "res://Resources/": "purple",
 "res://Scenes/": "teal",
 "res://Utilities/": "blue"

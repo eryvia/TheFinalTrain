@@ -29,7 +29,6 @@ func _advance() -> void:
 	else:
 		_show_current_line()
 
-
 func _end_dialogue() -> void:
 	is_active = false
 	dialogue_lines = []

@@ -15,11 +15,17 @@ var days = {
 	5 : "sedawd",
 	6 : "thidw",
 }
-var current_day = 1
+
+var current_day_index = 1
+var current_day = days[current_day_index]
 var current_hour = 0
 
-func advance_day(days):
-	current_day = days[current_day + 1]
+func advance_day():
+	if current_day_index >= days.size():
+		return  
+	current_day_index += 1
+	current_day = days[current_day_index]
+	get_tree().change_scene_to_file(Global.GAME_SCENES["NextDayTransition"])
 
 func day_one() -> void:
 	pass
