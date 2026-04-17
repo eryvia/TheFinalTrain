@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://duhe8oduhwh5j" path="res://Entities/Book/book.tscn" id="3_0awwi"]
 [ext_resource type="PackedScene" uid="uid://byiv2e35kqy7w" path="res://Entities/Mirror/mirror.tscn" id="4_7sk3c"]
 [ext_resource type="PackedScene" uid="uid://xdlyqagl0ynb" path="res://Entities/Bed/bed.tscn" id="5_27rwc"]
+[ext_resource type="PackedScene" uid="uid://b7pxw8rfpuk6d" path="res://Entities/Note/note.tscn" id="7_7sk3c"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1x4nq"]
 sky_top_color = Color(0.48410708, 0.41588038, 0.5490812, 1)
@@ -57,3 +58,5 @@ mesh = SubResource("BoxMesh_o30ac")
 
 [node name="Bed" parent="." unique_id=252370658 instance=ExtResource("5_27rwc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6338768, -19.306664)
+
+[node name="Note" parent="." unique_id=61981490 instance=ExtResource("7_7sk3c")]

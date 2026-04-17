@@ -7,6 +7,8 @@
 size = Vector3(0.41041565, 0.96336365, 0.10394287)
 
 [node name="Door" type="RigidBody3D" unique_id=312565534]
+collision_layer = 4
+collision_mask = 3
 script = ExtResource("1_v1o5j")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=504916271]

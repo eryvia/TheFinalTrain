@@ -43,6 +43,8 @@ extends CharacterBody3D
 var raycast_marker: Marker3D
 var current_target = null 
 
+#Checkings
+var isPlayerInteracting = false
 var isPlayerStoppedOverControl = false
 var isPlayerStopped = false
 var rayIsColliding = false
@@ -51,6 +53,9 @@ var _camera_locked := false
 var cig_state := false
 var _original_basis: Basis
 
+var Tasks = [
+		
+]
 
 var _coyote_timer       := 0.0
 var _jump_buffer_timer  := 0.0
@@ -66,6 +71,11 @@ var _input_dir          := Vector2.ZERO  # Cached for tilt
 
 var Items = []
 
+func _ready() -> void:
+	DialogueManager.dialogue_ended.connect(release_camera)
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	_cam_base_y = cam.position.y
+	
 func _put_player_to_stop() -> void:
 	isPlayerStopped = true
 	pass
@@ -79,11 +89,6 @@ func check_movement_checkings():
 	if isPlayerStopped || _camera_locked:
 		return true
 
-func _ready() -> void:
-	DialogueManager.dialogue_ended.connect(release_camera)
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	_cam_base_y = cam.position.y
-	
 func _display() -> void: 
 	pass
 	

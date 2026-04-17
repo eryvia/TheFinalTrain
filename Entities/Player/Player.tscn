@@ -4,6 +4,7 @@
 [ext_resource type="Shader" uid="uid://d0ufkgigi3bec" path="res://Entities/Player/Player.gdshader" id="2_ww0jn"]
 [ext_resource type="PackedScene" uid="uid://dpbvbyx1mfftg" path="res://Interface/DialogueManager/dialogue_manager.tscn" id="3_vweq0"]
 [ext_resource type="Script" uid="uid://uqh7ntd3v5pg" path="res://Entities/Player/cig_state_machine.gd" id="4_1des2"]
+[ext_resource type="PackedScene" uid="uid://coetcaha6uut6" path="res://Interface/ReadingManager/reading_manager.tscn" id="4_an6q6"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ww0jn"]
 radius = 0.7104492
@@ -100,6 +101,8 @@ text = "Testdawd
 "
 
 [node name="DialogueManager" parent="CanvasLayer" unique_id=408953947 instance=ExtResource("3_vweq0")]
+
+[node name="Reading_manager" parent="CanvasLayer" unique_id=1196768149 instance=ExtResource("4_an6q6")]
 
 [node name="CigStateMachine" type="Node" parent="." unique_id=1592844487]
 script = ExtResource("4_1des2")

@@ -13,13 +13,15 @@ func _ready():
 func interact(player) -> void:
 	label_index += 1
 	if label_index >= labels.size():
+		is_enabled = false
 		read(text)
 		player._put_player_to_stop()
-		
 
 func get_label() -> String:
+	if label_index >= labels.size():
+		return ""
 	return labels[label_index]
-
+	
 func reset_label() -> void:
 	label_index = 0
 	

@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://coetcaha6uut6"]
+
+[ext_resource type="Script" uid="uid://naooajume3mu" path="res://Interface/ReadingManager/reading_manager.gd" id="1_va8yt"]
+
+[node name="ReadingManager" type="Control" unique_id=1196768149]
+layout_mode = 3
+anchor_left = 0.058000002
+anchor_top = 0.091000006
+anchor_right = 0.94200003
+anchor_bottom = 0.90900004
+offset_left = -0.12000275
+offset_top = -0.12000275
+offset_right = 0.11999512
+offset_bottom = 0.11999512
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_va8yt")
+
+[node name="Panel" type="Panel" parent="." unique_id=2123560453]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.975
+anchor_bottom = 0.966
+offset_right = 0.14996338
+offset_bottom = -0.0920105
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel" unique_id=1268079197]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.062000003
+anchor_top = 0.091000006
+anchor_right = 0.929
+anchor_bottom = 0.85400003
+offset_left = -0.22400284
+offset_top = -0.023000717
+offset_right = 0.1920166
+offset_bottom = -0.06201172
+
+[node name="Label" type="Label" parent="Panel/ScrollContainer" unique_id=99757965]
+layout_mode = 2
+text = "dawdadwwaddwda
+dw
+dwafw"
